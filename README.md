@@ -16,7 +16,7 @@ Counter will be preserved for 3 days and after that previous value will be ignor
 
 1.
 * **Visual Studio** Publish ParticipantsCounter.App project via context menu and select "Framework-dependent deployment" in profile settings
-* **Visual Studio Code** Publish ParticipantsCounter.App project via comand *dotnet publish*
+* **Visual Studio Code** Publish ParticipantsCounter.App project via comand *dotnet publish* inside ParticipantsCounter.App folder
 
 2. Go to directory Release\netcoreapp2.1\publish
 3. Start application inside command line with command *dotnet ParticipantsCounter.App.dll*
@@ -25,12 +25,12 @@ Counter will be preserved for 3 days and after that previous value will be ignor
 
 1.
 * **Visual Studio** Publish ParticipantsCounter.App project via context menu and select "Self-contained deployment" in profile settings
-* **Visual Studio Code** Publish ParticipantsCounter.App project via comand (example for Windows 10 x64 platform) *dotnet publish -c Release -r win10-x64*
+* **Visual Studio Code** Publish ParticipantsCounter.App project via comand (example for Windows 10 x64 platform) *dotnet publish -c Release -r win10-x64* inside ParticipantsCounter.App folder
 
 2. Go to directory Release\netcoreapp2.1\publish
 3. Start application using exe file ParticipantsCounter.App.exe
 
-## Mantaining common notes
+## Maintanance notes
 * In the current implementation you need to restart application after several days to reload its state
 * To stop application press Enter key
 * Using several instances of bot for the same chats is not the case. Reuse application with another bot if you want to manage hosting. For that update bot token in the appsettings.json file
