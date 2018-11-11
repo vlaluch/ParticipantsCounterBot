@@ -15,8 +15,25 @@ namespace ParticipantsCounter.App.Commands
         {
             var participantsGroup = MessageParser.GetParticipantsGroupFromMessage(Message);
             participantsGroup.IsSure = true;
+
+            if (!ExecutionWillUpdateCurrentCount(participantsGroup))
+            {
+                return string.Empty;
+            }
+
             EventsRepository.RemoveParticipantGroupFromEvent(Message.ChatName, participantsGroup);
             return base.Execute();
+        }
+
+        private bool ExecutionWillUpdateCurrentCount(ParticipantsGroup participantsGroup)
+        {
+            if (participantsGroup.Name != Message.AuthorName)
+            {
+                return true;
+            }
+
+            var existingParticipantsGroup = EventsRepository.GetParticipantsGroup(Message.ChatName, participantsGroup.Name);
+            return existingParticipantsGroup != null;
         }
     }
 }

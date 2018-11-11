@@ -77,6 +77,18 @@ namespace ParticipantsCounter.Core.Infrastructure
             return eventData?.Participants;
         }
 
+        public ParticipantsGroup GetParticipantsGroup(string eventName, string participantsGroupName)
+        {
+            var eventData = GetEventByName(eventName);
+
+            if (eventData == null)
+            {
+                return null;
+            }
+
+            return eventData.Participants.FirstOrDefault(p => p.Name == participantsGroupName);            
+        }
+
         private Event GetEventByName(string name)
         {
             return _events.FirstOrDefault(x => x.Name == name);
