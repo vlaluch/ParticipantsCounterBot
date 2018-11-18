@@ -9,6 +9,7 @@ Counter will be preserved for 3 days and after that previous value will be ignor
 # Commands
 * **Count** ( /count or /c ) shows current count;
 * **List** ( /list or /l ) shows full list of participants;
+* **Clean** ( /clean ) removes all participants;
 
 # Build and run
 
