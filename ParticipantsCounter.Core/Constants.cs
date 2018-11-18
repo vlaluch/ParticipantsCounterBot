@@ -5,6 +5,7 @@
         NotCommand,
         Add,
         Remove,
+        Clean,
         NotSure,
         Count,
         List,

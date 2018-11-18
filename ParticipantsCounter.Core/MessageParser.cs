@@ -32,6 +32,10 @@ namespace ParticipantsCounter.Core.Infrastructure
             {
                 return CommandType.List;
             }
+            if (IsCleanCommand(message.Text))
+            {
+                return CommandType.Clean;
+            }
             if (IsAutoAlertsCommand(message.Text))
             {
                 return CommandType.AutoAlerts;
@@ -143,6 +147,11 @@ namespace ParticipantsCounter.Core.Infrastructure
         private static bool IsListCommand(string messageText)
         {
             return messageText.Trim().ToLower() == "/list" || messageText.Trim().ToLower() == "/l";
+        }
+
+        private static bool IsCleanCommand(string messageText)
+        {
+            return messageText.Trim().ToLower() == "/clean";
         }
 
         private static bool IsAutoAlertsCommand(string messageText)

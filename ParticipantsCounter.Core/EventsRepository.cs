@@ -89,6 +89,19 @@ namespace ParticipantsCounter.Core.Infrastructure
             return eventData.Participants.FirstOrDefault(p => p.Name == participantsGroupName);            
         }
 
+        public void RemoveAllParticipantsGroupsFromEvent(string eventName)
+        {
+            var eventData = GetEventByName(eventName);
+
+            if (eventData == null)
+            {
+                return;
+            }
+
+            _events.Remove(eventData);
+            _storage.Save(_events);
+        }
+
         private Event GetEventByName(string name)
         {
             return _events.FirstOrDefault(x => x.Name == name);

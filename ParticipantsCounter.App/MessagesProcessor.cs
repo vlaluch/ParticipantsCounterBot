@@ -43,6 +43,8 @@ namespace ParticipantsCounter.App
                     return new GetParticipantsCountCommand(message, _eventsRepository);
                 case CommandType.List:
                     return new GetListOfParticipantsCommand(message, _eventsRepository);
+                case CommandType.Clean:
+                    return new CleanParticipantsListCommand(message, _eventsRepository);
                 default:
                     throw new NotImplementedException("Unexpected command");
             }
