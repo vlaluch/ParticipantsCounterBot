@@ -70,10 +70,17 @@ namespace ParticipantsCounter.App
 
             OnMessageReceived?.Invoke(messageInfo);
 
-            var response = _messagesProcessor.ProcessMessage(messageInfo);
-            if (!string.IsNullOrEmpty(response))
+            try
             {
-                await _client.SendTextMessageAsync(message.Chat.Id, response);
+                var response = _messagesProcessor.ProcessMessage(messageInfo);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    await _client.SendTextMessageAsync(message.Chat.Id, response);
+                }
+            }
+            catch (Exception e)
+            {
+                OnErrorOccured?.Invoke(e.Message);
             }
         }
 
